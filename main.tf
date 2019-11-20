@@ -187,8 +187,10 @@ module "sql" { #Déclaration du module du service sql
   source = "./modules/sql"
   name         = "sql-vm"
   ssh_key_name = "${aws_key_pair.ssh_key.key_name}"
+
   subnet1_id  = "${module.vpc_client.sql1}"
   subnet2_id  = "${module.vpc_client.sql2}"
+  
   private_ip1 = "${var.sql1_ip}"
   private_ip2 = "${var.sql2_ip}"
 
