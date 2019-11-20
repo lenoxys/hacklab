@@ -135,11 +135,17 @@ At a high level these are each of the steps this plan will perform:
 #. Run the ``vpc`` module
     #. Create the VPC
     #. Create the Internet gateway
-    #. Create the ``management``, ``untrust``, ``web``, and ``database``
-       subnets
+    #. Create the ``management``, ``untrust``, ``trust`` subnets
     #. Create the security groups for each subnet
-    #. Create the default route for the ``web`` and ``database`` subnets
-#. Run the ``firewall`` module
+    #. Create the default route for the ``untrust`` subnets
+#. Run the ``vpc_client``module
+    #. Create the VPC
+    #. Create the different subnet for the ``web`` and ``sql``
+#. Run the ``VPN``module
+    #. Create the vpn connection
+    #. Create the customer gateway based on the eip of FW1 and FW2
+    #. Create the vpn gateway
+#. Run the ``firewall`` module 1 and 2
     #. Create the VM-Series firewall instance
     #. Create the VM-Series firewall interfaces
     #. Create the Elastic IPs for the ``management`` and ``untrust`` interfaces
@@ -147,13 +153,13 @@ At a high level these are each of the steps this plan will perform:
 #. Run the ``web`` module
     #. Create the web server instance
     #. Create the web server interface
-#. Run the ``database`` module
+#. Run the ``sql`` module
     #. Create the database server instance
     #. Create the database server interface
 
 The deployment process should finish in a few minutes and you will be presented
 with the public IP addresses of the VM-Series firewall management and untrust
-interfaces.  However, the VM-Series firewall can take up to *ten minutes* to
+interfaces.  However, the VM-Series firewall and VPN AWS connection can take up to *ten minutes* to
 complete the initial bootstrap process.
 
 It is recommended that you skip ahead and read the :doc:`../03-run/terraform/background-terraform` section while you wait.
@@ -163,8 +169,8 @@ Confirm firewall bootstrap completion
 -----------------------------------------
 SSH into the firewall with the following credentials.
 
-- **Username:** ``admin``
-- **Password:** ``Ignite2019!``
+- **Username:** ``paloalto``
+- **Password:** ``Pal0Alt0@123``
 
 .. code-block:: bash
 
