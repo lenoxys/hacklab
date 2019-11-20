@@ -1,7 +1,3 @@
-provider "aws" { # Définition du provider
-  region  = "${var.aws_region}" # Variable Région AWS
-  version = "2.7"
-}
 
 resource "aws_vpn_connection" "main" {
   vpn_gateway_id      = "${aws_vpn_gateway.vpn_gw.id}"

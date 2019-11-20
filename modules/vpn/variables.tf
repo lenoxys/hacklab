@@ -10,3 +10,6 @@ variable "public_ip_fw2" {
   
 }
 
+variable "ssh_key_name" {}
+
+

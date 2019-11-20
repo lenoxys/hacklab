@@ -18,6 +18,6 @@ output "fw_eth2_eip" {
   value = "${aws_eip.fw_eth2_eip.public_ip}"
 }
 
-output "fw_eth1_id" {
+output "fw_eth1_eip" {
   value = "${aws_network_interface.fw_eth2.id}"
 }

@@ -22,6 +22,7 @@ module "vpc_transit" { #module VPC
   mgmt_subnet2 = "10.5.45.0/24"
   trust_subnet2 = "10.5.46.0/24"
   untrust_subnet2 = "10.5.47.0/24"
+
   tags = {
     Environment = "transitvpc"
   }
@@ -204,10 +205,13 @@ module "sql" { #Déclaration du module du service sql
 module "vpn" {
   source ="./modules/vpn"
   name  ="vpn-transit"
+
   ssh_key_name ="${aws_key_pair.ssh_key.key_name}"
+  
   vpc_client_id="${module.vpc_client.vpc_client_id}"
   public_ip_fw1="${module.firewall.fw_eth1_eip}"
   public_ip_fw2="${module.firewall.fw_eth2_eip}"
+
   tags = {
     Environment = "VPN Transit"
   }
