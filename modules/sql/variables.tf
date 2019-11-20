@@ -14,15 +14,6 @@ variable "private_ip2" {
 variable "name" {
   default = "Web"
 }
-
-variable "sql1" {
-  description ="private ip sql1"
-}
-
-variable "sql2" {
-  description ="private ip sql2"
-}
-
 variable "tags" {
   description = "A map of tags to add to all resources"
   default     = {}
