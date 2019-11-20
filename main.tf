@@ -173,6 +173,7 @@ module "web" { #Déclaration du module du service web
 
   subnet_id1  = "${module.vpc_client.web1}"
   subnet_id2  = "${module.vpc_client.web2}"
+  
   private_ip1 = "${var.web1_ip}"
   private_ip2 = "${var.web2_ip}"
 
@@ -190,7 +191,7 @@ module "sql" { #Déclaration du module du service sql
 
   subnet1_id  = "${module.vpc_client.sql1}"
   subnet2_id  = "${module.vpc_client.sql2}"
-  
+
   private_ip1 = "${var.sql1_ip}"
   private_ip2 = "${var.sql2_ip}"
 
