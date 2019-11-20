@@ -205,6 +205,12 @@ module "vpn" {
   source ="./modules/vpn"
   name  ="vpn-transit"
   ssh_key_name ="${aws_key_pair.ssh_key.key_name}"
+  vpc_client_id="${module.vpc_client.vpc_client_id}"
+  public_ip_fw1="${module.firewall.fw_eth1_eip}"
+  public_ip_fw2="${module.firewall.fw_eth2_eip}"
+  tags = {
+    Environment = "VPN Transit"
+  }
 }
 /*
 # Définition de la table de routage

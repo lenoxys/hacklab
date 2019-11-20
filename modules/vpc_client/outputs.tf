@@ -3,7 +3,7 @@ output "name" {
   value = "${var.name}"
 }
 
-output "vpc_id" {
+output "vpc_client_id" {
   value = "${aws_vpc.vpc_client.id}"
 }
 output vpc_cidr_block {

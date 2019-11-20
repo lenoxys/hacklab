@@ -56,33 +56,6 @@ resource "aws_route_table_association" "sql2" {
   route_table_id = "${aws_route_table.VPN.id}"
 }
 
-resource "aws_vpn_gateway" "vpn_gw" {
-  vpc_id = "${aws_vpc.vpc_client.id}"
-
-  tags = {
-    Name = "vpn gw vpc_client"
-  }
-}
-resource "aws_customer_gateway" "main" {
-  bgp_asn    = 65000
-  ip_address = "${var.ip_fw1}"
-  type       = "ipsec.1"
-
-  tags = {
-    Name = "main-customer-gateway"
-  }
-}
-
-resource "aws_customer_gateway" "second" {
-  bgp_asn    = 65000
-  ip_address = "${var.ip_fw2}"
-  type       = "ipsec.1"
-
-  tags = {
-    Name = "main-customer-gateway"
-  }
-}
-
 
 # Déclaration des subnets et des tables de routage du 2nd firewall
 
