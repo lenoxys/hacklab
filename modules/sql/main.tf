@@ -1,5 +1,5 @@
 # Récupération des données d'un serveur web existant
-data "aws_ami" "web_ami" {
+data "aws_ami" "sql_ami" {
   most_recent = true
 
   filter {
@@ -11,8 +11,8 @@ data "aws_ami" "web_ami" {
 }
 
 # Création de l'instance du serveur web
-resource "aws_instance" "web" {
-  ami           = "${data.aws_ami.web_ami.id}"
+resource "aws_instance" "sql" {
+  ami           = "${data.aws_ami.sql_ami.id}"
   instance_type = "t2.micro"
   key_name      = "${var.ssh_key_name}"
 

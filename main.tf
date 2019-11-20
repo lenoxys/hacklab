@@ -173,8 +173,8 @@ module "web" { #Déclaration du module du service web
 
   subnet_id1  = "${module.vpc_client.web1}"
   subnet_id2  = "${module.vpc_client.web2}"
-  private_ip1 = "${var.web1_ip}" # Adresse IP privée du service web1
-  private_ip2 = "${var.web2_ip}" # Adresse IP privée du service web2
+  private_ip1 = "${var.web1_ip}"
+  private_ip2 = "${var.web2_ip}"
 
   tags = {
     Environment = "automation"
@@ -182,14 +182,14 @@ module "web" { #Déclaration du module du service web
   }
 }
 
-/*
+
 module "sql" { #Déclaration du module du service sql
   source = "./modules/sql"
   name         = "sql-vm"
   ssh_key_name = "${aws_key_pair.ssh_key.key_name}"
-  subnet1_id  = "${module.vpc_client.sql_sub1.id}"
-  subnet2_id  = "${module.vpc_client.sql_sub2.id}"
-  private_ip1 = "${var.sql1_ip}" # Adresse IP privée du service sql1
+  subnet1_id  = "${module.vpc_client.sql1}"
+  subnet2_id  = "${module.vpc_client.sql2}"
+  private_ip1 = "${var.sql1_ip}"
   private_ip2 = "${var.sql2_ip}"
 
   tags = {
@@ -197,7 +197,7 @@ module "sql" { #Déclaration du module du service sql
     server-type = "sql"
   }
 }
-
+/*
 # Définition de la table de routage
 resource "aws_route_table" "web" {
   vpc_id = "${module.vpc.vpc_id}"
