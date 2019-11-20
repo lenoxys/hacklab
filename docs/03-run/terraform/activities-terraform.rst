@@ -17,7 +17,7 @@ First, change to the Terraform configuration directory.
 
 .. code-block:: bash
 
-    $ cd ~/multicloud-automation-lab/configuration/terraform
+    $ cd ~/hacklab/configuration/terraform
 
 
 Provider Initialization
@@ -36,8 +36,8 @@ following commands to add the appropriate environment variables:
 .. code-block:: bash
 
     $ export PANOS_HOSTNAME="<YOUR FIREWALL MGMT IP GOES HERE>"
-    $ export PANOS_USERNAME="admin"
-    $ export PANOS_PASSWORD="Ignite2019!"
+    $ export PANOS_USERNAME="paloalto"
+    $ export PANOS_PASSWORD="Pal0Alt0@123"
 
 .. note:: Replace the text ``<YOUR FIREWALL MGMT IP GOES HERE>`` with your firewall's management IP address.
 
@@ -47,8 +47,38 @@ using the ``env | grep PANOS`` command:
 .. code-block:: bash
 
     PANOS_HOSTNAME=3.216.53.203
-    PANOS_USERNAME=admin
-    PANOS_PASSWORD=Ignite2019!
+    PANOS_USERNAME=paloalto
+    PANOS_PASSWORD=Pal0Alt0@123
+
+Now create a file ``main.tf`` in these file add the code to configure the zone,interface and update it based on your aws configuration.
+
+.. code-block:: terraform
+
+  
+    provider "panos" {}
+
+    resource "panos_ethernet_interface" "untrust" {
+        name                      = "ethernet1/1"
+        vsys                      = "vsys1"
+        mode                      = "layer3"
+        enable_dhcp               = true
+        create_dhcp_default_route = true
+    }
+
+    resource "panos_ethernet_interface" "web" {
+        name        = "ethernet1/2"
+        vsys        = "vsys1"
+        mode        = "layer3"
+        enable_dhcp = true
+    }
+
+    resource "panos_ethernet_interface" "db" {
+        name        = "ethernet1/3"
+        vsys        = "vsys1"
+        mode        = "layer3"
+        enable_dhcp = true
+    }
+
 
 With these values defined, we can now initialize the Terraform panos provider with the following command.
 
