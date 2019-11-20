@@ -41,23 +41,26 @@ Lab Topology
 +--------------+--------------+-------------+
 | Subnet       | Address      | Interface   |
 +==============+==============+=============+
-| Management   | 10.5.0.0/24  | Management  |
+| ManagementFW1| 10.5.0.0/24  | Management  |
 +--------------+--------------+-------------+
-| Untrust      | 10.5.1.0/24  | ethernet1/1 |
+| ManagementFW2| 10.5.45.0/24 | Management  |
 +--------------+--------------+-------------+
-| Web          | 10.5.2.0/24  | ethernet1/2 |
+| WEB1         | 10.4.2.0/24  | web - 1     |
 +--------------+--------------+-------------+
-| Database     | 10.5.3.0/24  | ethernet1/3 |
+| WEB2         | 10.4.46.0/24 | web - 2     |
++--------------+--------------+-------------+
+| SQL1         | 10.4.1.0/24  | sql - 1     |
++--------------+--------------+-------------+
+| SQL1         | 10.4.1.0/24  | sql - 1     |
 +--------------+--------------+-------------+
 
 Lab Components
 --------------
 
-Qwiklabs
-    This lab is launched using Qwiklabs, which is an online learning platform
-    that deploys and provides access to cloud-based lab environments.  Qwiklabs
-    will establish a set of temporary set of credentials in the cloud provider
-    in order to deploy and access the cloud infrastructure and services.
+Slide - AWS Account
+    This lab is launched using AWS Account, which is gived by your prefered SE.
+    One login and password provides access to cloud-based lab environments. the account
+    is temporary in the cloud provider in order to deploy and access the cloud infrastructure.
 
 Launchpad VM
     A Debian 9 Linux virtual machine will be deployed in each cloud environment
@@ -78,11 +81,6 @@ Red Hat Ansible
     more effective at automating configuration management tasks.  We will be
     using both Terraform and Ansible to make configuration changes to the
     VM-Series firewall in order to illustrate their different capabilities.
-
-Google Cloud Platform (GCP)
-    Google Cloud Platform, offered by Google, is a suite of cloud computing
-    services that runs on the same infrastructure that Google uses internally
-    for its end-user products, such as Google Search and YouTube.
 
 Amazon Web Services (AWS)
     Amazon Web Services is a subsidiary of Amazon that provides on-demand cloud

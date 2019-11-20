@@ -1,31 +1,31 @@
-.. multicloud-automation-lab documentation master file, created by
-   sphinx-quickstart on Fri Mar 22 17:08:44 2019.
+.. AWS documentation master file, created by
+   sphinx-quickstart on wed nov 20 17:08:44 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Multi-Cloud Security Automation Lab Guide
+AWS Automation Lab Guide
 =========================================
 
-.. image:: ignite19-europe-grey.png
+.. image:: palo-alto-networks-logo.png
    :align: center
 
 Welcome
 -------
 
-Welcome to the Multi-Cloud Security Automation Lab!
+Welcome to the AWS Security Automation Lab!
 
-In this lab we will be learning how to automate the deployment and configuration of infrastructure supporting a web application within a public cloud provider.  A key element of this infrastructure is the Palo Alto Networks NGFW.  
+In this lab we will be learning how to automate the deployment and configuration of infrastructure supporting a web application within AWS public cloud provider.  A key element of this infrastructure is the Palo Alto Networks NGFW.  
 
-Following the deployment, we will automate the configuration of the firewall to support and protect protect the web application.  
+Following the deployment, we will automate the configuration of the firewall to support and protect protect the web application through a VPC Transit  
 
-Lastly, we will ensure that the firewall is able to respond effectively to changes made to the application infrastructure.  You will have your choice of deploying your application in Google Cloud Platform (GCP), Amazon Web Services (AWS) or both if time permits.  
+Lastly, we will ensure that the firewall is able to respond effectively to changes made to the application infrastructure.  You will deploying your application in Amazon Web Services (AWS).  
 
 
 Objective
 ---------
-The objective of this workshop is to deploy and secure a `WordPress <https://wordpress.org>`_ content management system in GCP and AWS.  This web application will be supported by an `Apache <https://httpd.apache.org>`_ web server and a `MariaDB <https://mariadb.org/>`_ database server residing in two separate subnets.  
+The objective of this workshop is to deploy and secure a `WordPress <https://wordpress.org>`_ content management system in AWS.  This web application will be supported by an `Apache <https://httpd.apache.org>`_ web server and a `DB `_ database server residing in two separate subnets with different AZ.  
 
-As part of our infrastructure deployment, a VM-Series NGFW will be inserted between the untrusted public subnet, the web subnet, and the database subnet.  However, we will need to configure this virtual firewall to support its network environment and the applications it will be protecting.
+As part of our infrastructure deployment, a VM-Series NGFW in a specific VPC 'VPC-Transit' will be inserted between Internet and the web subnet, and the database subnet.  However, we will need to configure this virtual firewall to support its network environment and the applications it will be protecting.
 
 
 Learning Outcomes
@@ -55,7 +55,6 @@ Learning Outcomes
     :hidden:
     :caption: build
 
-    02-build/deploy-gcp
     02-build/deploy-aws
 
 .. toctree::
