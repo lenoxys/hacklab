@@ -1,6 +1,8 @@
 variable "ssh_key_name" {}
 
-variable "subnet_id" {}
+variable "subnet1_id" {}
+
+variable "subnet2_id" {}
 
 variable "private_ip" {}
 

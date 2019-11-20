@@ -4,6 +4,3 @@ output "sql_instance_id1" {
 output "sql_instance_id2" {
   value = "${aws_instance.sql2_instance.id}"
 }
-output "web_instance_id2" {
-  value = "${aws_instance.sql2.id}"
-}
