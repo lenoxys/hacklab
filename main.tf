@@ -173,7 +173,7 @@ module "web" { #Déclaration du module du service web
 
   subnet_id1  = "${module.vpc_client.web1}"
   subnet_id2  = "${module.vpc_client.web2}"
-  
+
   private_ip1 = "${var.web1_ip}"
   private_ip2 = "${var.web2_ip}"
 
@@ -199,6 +199,12 @@ module "sql" { #Déclaration du module du service sql
     Environment = "automation"
     server-type = "sql"
   }
+}
+
+module "vpn" {
+  source ="./modules/vpn"
+  name  ="vpn-transit"
+  ssh_key_name ="${aws_key_pair.ssh_key.key_name}"
 }
 /*
 # Définition de la table de routage
