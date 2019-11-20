@@ -1,15 +1,15 @@
 variable "ssh_key_name" {}
 
-variable "subnet_id1" {}
+variable "subnet1_id" {}
 
-variable "subnet_id2" {}
+variable "subnet2_id" {}
 
 variable "private_ip1" {}
 
 variable "private_ip2" {}
 
 variable "name" {
-  default = "Web"
+  default = "SQL"
 }
 variable "tags" {
   description = "A map of tags to add to all resources"

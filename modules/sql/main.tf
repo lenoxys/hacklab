@@ -11,7 +11,7 @@ data "aws_ami" "sql_ami" {
 }
 
 # Création de l'instance du serveur web
-resource "aws_instance" "sql1" {
+resource "aws_instance" "sql1_instance" {
   ami           = "${data.aws_ami.sql_ami.id}"
   instance_type = "t2.micro"
   key_name      = "${var.ssh_key_name}"
@@ -40,7 +40,7 @@ resource "aws_network_interface" "sql2" {
 }
 
 
-resource "aws_instance" "sql2" {
+resource "aws_instance" "sql2_instance" {
   ami           = "${data.aws_ami.sql_ami.id}"
   instance_type = "t2.micro"
   key_name      = "${var.ssh_key_name}"
