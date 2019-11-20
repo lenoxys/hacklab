@@ -65,15 +65,8 @@ Now create a file ``main.tf`` in these file add the code to configure the zone,i
         create_dhcp_default_route = true
     }
 
-    resource "panos_ethernet_interface" "web" {
+    resource "panos_ethernet_interface" "trust" {
         name        = "ethernet1/2"
-        vsys        = "vsys1"
-        mode        = "layer3"
-        enable_dhcp = true
-    }
-
-    resource "panos_ethernet_interface" "db" {
-        name        = "ethernet1/3"
         vsys        = "vsys1"
         mode        = "layer3"
         enable_dhcp = true
@@ -88,41 +81,7 @@ With these values defined, we can now initialize the Terraform panos provider wi
 
 The provider is now ready to communicate with our firewall.
 
-Network Interfaces
-------------------
-Your firewall has been bootstrapped with an initial password and nothing else.
-We're going to be performing the initial networking configuration with
-Terraform.
-
-You've been provided with the following Terraform plan in ``main.tf``:
-
-.. code-block:: terraform
-
-    provider "panos" {}
-
-    resource "panos_ethernet_interface" "untrust" {
-        name                      = "ethernet1/1"
-        vsys                      = "vsys1"
-        mode                      = "layer3"
-        enable_dhcp               = true
-        create_dhcp_default_route = true
-    }
-
-    resource "panos_ethernet_interface" "web" {
-        name        = "ethernet1/2"
-        vsys        = "vsys1"
-        mode        = "layer3"
-        enable_dhcp = true
-    }
-
-    resource "panos_ethernet_interface" "db" {
-        name        = "ethernet1/3"
-        vsys        = "vsys1"
-        mode        = "layer3"
-        enable_dhcp = true
-    }
-
-This configuration creates your network interfaces.  The PAN-OS provider
+The configuration creates your network interfaces.  The PAN-OS provider
 doesn't need any additional configuration specified because it is pulling that
 information from the environment variables we set earlier.
 
@@ -157,7 +116,7 @@ Specifying the static distance isn't required.
 
 Define the virtual router resource in ``main.tf``, and run ``terraform apply``.
 
-.. warning:: AWS and GCP have slight differences in the way that routing has to
+.. warning:: GCP have slight differences in the way that routing has to
    be configured.  **If you chose GCP as your cloud, you have an additional
    step!**
 
@@ -184,15 +143,6 @@ The example code from that page looks like this:
 
 This code adds a static route named *localnet*, that routes traffic destined to
 the network *10.1.7.0/32* to the next hop of *10.1.7.4*.
-
-You will need to create three resources for the static routes depicted below:
-
-.. figure:: gcp_static_routes.png
-
-   Static routes needed in GCP.
-
-Define those resources in ``main.tf``, and run ``terraform apply``.
-
 
 Security Zones
 --------------
@@ -230,12 +180,9 @@ but they need to have the following definition:
 
 .. figure:: web_zone.png
 
-   Definition of **web-zone**.
-
-.. figure:: db_zone.png
-
-   Definition of **db-zone**.
+   Definition of **trust-zone**.
 
 Define those resources in ``main.tf``, and run ``terraform apply``.
 
-You're done with the Terraform portion of the lab!
+You're done with the Terraform portion of the lab! And if you look directly on the firewall
+the commit is not done at the moment, here is the big difference between Terraform and Ansible.
