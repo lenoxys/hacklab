@@ -39,7 +39,7 @@ variable "mgmt_subnet_access" {
 }
 variable "public_key_file" {
   description = "Full path to the SSH public key file"
-    default = "/Users/draynal/.ssh/lab_ssh_key.pub"
+    default = "~/.ssh/lab_ssh_key.pub"
   type        = "string"
 }
 /*variable "Product_code" {

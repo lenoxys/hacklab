@@ -2,8 +2,6 @@
 Lab Deployment (AWS)
 ====================
 
-.. warning:: If you are working on the GCP lab, skip this page and proceed to :doc:`../03-run/terraform/background-terraform`.
-
 In this activity you will:
 
 - Create AWS environment variables
@@ -21,9 +19,9 @@ call modules responsible for instantiating the network, compute, and storage
 resources needed.
 
 In order for Terraform to do this it will need to authenticate to AWS using the
-AWS Access Key and Secret Key values that were presented in the Qwiklabs panel
-when the lab was started.  Rather than write these as Terraform variables, we
-will use Linux environment variables.
+AWS Access Key and Secret Key values that were presented to you or you can created in 
+AWS console when the lab was started.  Rather than write these as Terraform variables, we
+will use environment variables.
 
 Create the environment variables.
 
@@ -46,14 +44,13 @@ directory.
 
     $ ssh-keygen -t rsa -b 1024 -N '' -f ~/.ssh/lab_ssh_key
 
-
 Create the Terraform variables
 ------------------------------
 Change into the AWS deployment directory.
 
 .. code-block:: bash
 
-    $ cd ~/multicloud-automation-lab/deployment/aws
+    $ cd ~/hacklab/
 
 In this directory you will find the three main files associated with a
 Terraform plan: ``main.tf``, ``variables.tf``, and ``outputs.tf``.  View the
@@ -72,8 +69,18 @@ the variables that will be used in the plan (but not necessarily their values).
 The ``outputs.tf`` file will define the values to display that result from
 applying the plan.
 
-Create a file called ``terraform.tfvars`` in the current directory that
-contains the following variables and their values.  Fill in the quotes with the
+Verify your region directly in the variables file, ``variables.tf``it's important to update it 
+for the lab.
+
+.. code-block:: terraform
+
+    variable "aws_region"
+    variable "aws_az_name1"
+    variable "aws_az_name2"
+    variable "public_key_file"
+
+Some developper prefere to create a file called ``terraform.tfvars`` in the current directory that
+contains the following variables and their values. Generally these file are fill with the
 AWS region name, the AWS availability zone, and the path to your SSH public key
 file.
 
@@ -86,7 +93,7 @@ file.
 
 Initialize the AWS Terraform provider
 -------------------------------------
-Once you've created the ``terraform.tfvars`` file and populated it with the
+Once you've updated the ``variables.tf`` file and populated it with the
 variables and values you are now ready to initialize the Terraform providers.
 For this initial deployment we will only be using the
 `AWS Provider <https://www.terraform.io/docs/providers/aws/index.html>`_.
@@ -124,6 +131,7 @@ At a high level these are each of the steps this plan will perform:
     #. Create the ``/config/init-cfg.txt``, ``/config/bootstrap.xml``,
        ``/software``, ``/content``, and ``/license`` objects in the bootstrap
        bucket
+    #. This bucket contain the firewall configuration with the login/pwd and nothing else
 #. Run the ``vpc`` module
     #. Create the VPC
     #. Create the Internet gateway
