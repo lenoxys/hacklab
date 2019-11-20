@@ -9,6 +9,7 @@ In this activity you will:
 - Define Service Objects
 - Define Security Rules
 - Define NAT Rules
+- Define VPN Connection
 - Commit the Configuration
 - Run the Playbook
 
@@ -19,7 +20,7 @@ First, let's change to the Ansible configuration directory.
 
 .. code-block:: bash
 
-  $ cd ~/multicloud-automation-lab/configuration/ansible
+  $ cd ~/hacklab/configuration/ansible
 
 
 Module Communications
@@ -91,6 +92,9 @@ This playbook creates the following address objects by using the
 `panos_address_object module <https://ansible-pan.readthedocs.io/en/latest/modules/panos_address_object_module.html>`_.
 Also notice the fact that ``commit`` is set to **False**, so that we don't have
 to wait on a commit each time a module runs.
+
+The most 
+The roles in the code ask ansible to download the script attach to PaloAltoNetworks.paloaltonetworks 
 
 
 Service Objects
