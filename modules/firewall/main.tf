@@ -94,7 +94,6 @@ resource "aws_network_interface" "fw_eth2" {
 # Permet de préciser que l'Elastic IP du mgmt se trouve dans le VPC
 resource "aws_eip" "fw_mgmt_eip" {
   vpc = true
-
   tags = {Name="EIP-mgmt-FW1"}
 }
 
