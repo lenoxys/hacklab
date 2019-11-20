@@ -18,22 +18,22 @@ resource "aws_instance" "sql1_instance" {
 
   network_interface {
     device_index         = 0
-    network_interface_id = "${aws_network_interface.sql1.id}"
+    network_interface_id = "${aws_network_interface.sql1_net.id}"
   }
 
   tags = "${merge(map("Name", format("%s", var.name)), var.tags)}"
 }
 
 # Création de l'interface du serveur web
-resource "aws_network_interface" "sql1" {
-  subnet_id   = "${var.subnet_id1}"
+resource "aws_network_interface" "sql1_net" {
+  subnet_id   = "${var.subnet1_id}"
   private_ips = ["${var.private_ip1}"]
 
   tags = {Name="SQL1-Interface"}
 }
 
-resource "aws_network_interface" "sql2" {
-  subnet_id   ="${var.subnet_id2}"
+resource "aws_network_interface" "sql2_net" {
+  subnet_id   ="${var.subnet2_id}"
   private_ips =["${var.private_ip2}"]
   
   tags = {Name="SQL2-Interface"}
@@ -47,7 +47,7 @@ resource "aws_instance" "sql2_instance" {
 
   network_interface {
     device_index         = 0
-    network_interface_id = "${aws_network_interface.sql2.id}"
+    network_interface_id = "${aws_network_interface.sql2_net.id}"
   }
 
   tags = "${merge(map("Name", format("%s", var.name)), var.tags)}"
