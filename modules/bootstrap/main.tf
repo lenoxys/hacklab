@@ -1,6 +1,6 @@
 #Création d'un bucket bootsrap
 resource "aws_s3_bucket" "bootstrap_bucket" {
-  bucket_prefix = "automation"
+  bucket_prefix = "NGFW"
   acl           = "private"
  
 }

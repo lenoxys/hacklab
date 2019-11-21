@@ -48,21 +48,20 @@ module "vpc_client" { #module VPC
     Environment = "web"
   }
 }
-module "firewall" { # Déclaration du module du 1er firewall
+module "firewall" { # Déclaration du module 1er firewall
   source = "./modules/firewall"
   name = "Firewall-1"
-  ssh_key_name = "${aws_key_pair.ssh_key.key_name}" # Spécification de la clé SSH public
+  ssh_key_name = "${aws_key_pair.ssh_key.key_name}" # SSH Key for auth
   vpc_id       = "${module.vpc_transit.vpc_id}"
 
   fw_mgmt_subnet_id = "${module.vpc_transit.mgmt_subnet_id}"
-  fw_mgmt_ip        = "10.5.0.4" # Adresse IP privée de l'interface de mgmt
-  fw_mgmt_sg_id     = "${aws_security_group.firewall_mgmt_sg.id}" # Règle de sécurité
+  fw_mgmt_ip        = "10.5.0.4" # Private IP
+  fw_mgmt_sg_id     = "${aws_security_group.firewall_mgmt_sg.id}" # Security Group public
 
-  # Interface des subnets
   fw_eth1_subnet_id = "${module.vpc_transit.trust_subnet_id}"
   fw_eth2_subnet_id = "${module.vpc_transit.untrust_subnet_id}"
 
-  fw_dataplane_sg_id = "${aws_security_group.public_sg.id}" # Règle de sécurité
+  fw_dataplane_sg_id = "${aws_security_group.public_sg.id}" # Security Group public
 
   fw_version          = "9.0"
   fw_product_code     = "806j2of0qy5osgjjixq9gqc6g"
@@ -74,7 +73,7 @@ module "firewall" { # Déclaration du module du 1er firewall
 
 }
 
-module "firewall2" { # Déclaration du module du 2nd firewall
+module "firewall2" { # Déclaration du module 2nd firewall
   source = "./modules/firewall2"
 
   name = "Firewall-2"
@@ -212,28 +211,8 @@ module "vpn" {
   public_ip_fw1="${module.firewall.fw_eth2_eip}"
   public_ip_fw2="${module.firewall2.fw2_eth2_eip}"
   route_table_id="${module.vpc_client.route_table_id}"
-  
+
   tags = {
     Environment = "VPN Transit"
   }
 }
-/*
-# Définition de la table de routage
-resource "aws_route_table" "web" {
-  vpc_id = "${module.vpc.vpc_id}"
-
-  tags = {
-    Name = "${module.vpc.name}-WebRouteTable"
-  }
-}
-resource "aws_route" "web_default" {
-  route_table_id         = "${aws_route_table.web.id}"
-  destination_cidr_block = "0.0.0.0/0"
-  network_interface_id   = "${module.firewall.fw_eth3_id}"
-}
-
-resource "aws_route_table_association" "web_assoc" {
-  subnet_id      = "${module.vpc.web_subnet_id}"
-  route_table_id = "${aws_route_table.web.id}"
-}
-*/
