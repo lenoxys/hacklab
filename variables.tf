@@ -68,16 +68,7 @@ variable "www_count" {
   default = "2"
 }
 
-# Using ubuntu amis
-variable "aws_amis" {
-  default = {
-    eu-west-1 = "ami-b1cf19c6"
-    us-east-1 = "ami-de7ab6b6"
-    us-west-1 = "ami-3f75767a"
-    us-west-2 = "ami-21f78e11"
-  }
-}
-
+# Using CentOS Product code
 variable "centos_product_code7" {
   default ="aw0evgkw8e5c1q413zgy5pjce"
   description ="product code for centos7"
