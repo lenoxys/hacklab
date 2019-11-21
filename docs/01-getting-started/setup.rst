@@ -42,6 +42,7 @@ download the zip file
 ``https://releases.hashicorp.com/terraform/0.11.14/``
 
 .. code-block:: bash
+
     $ sudo apt-get install unzip
     $ unzip [Your terraform file in version 0.11.xx]
     $ sudo cp terraform /usr/bin/
@@ -49,6 +50,7 @@ download the zip file
 Now you can verify the version :
 
 .. code-block:: bash
+
     $ terraform --version
 
 Launch the lab environment
