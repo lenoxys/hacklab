@@ -25,3 +25,7 @@ output "sql1" {
 output "sql2" {
   value = "${aws_subnet.sql2.id}"
 }
+
+output "route_table_id" {
+  value ="${aws_route_table.VPN.id}"
+}

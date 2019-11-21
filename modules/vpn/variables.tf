@@ -10,3 +10,5 @@ variable "ssh_key_name" {}
 variable "tags" {  
 }
 variable "name" {}
+
+variable "route_table_id" {}

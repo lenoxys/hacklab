@@ -33,3 +33,8 @@ resource "aws_vpn_gateway" "vpn_gw" {
     Name = "vpn gw vpc_client"
   }
 }
+
+resource "aws_vpn_gateway_route_propagation" "vpn_propagation" {
+  vpn_gateway_id = "${aws_vpn_gateway.vpn_gw.id}"
+  route_table_id = "${var.route_table_id}"
+}

@@ -211,7 +211,8 @@ module "vpn" {
   vpc_client_id="${module.vpc_client.vpc_client_id}"
   public_ip_fw1="${module.firewall.fw_eth2_eip}"
   public_ip_fw2="${module.firewall2.fw2_eth2_eip}"
-
+  route_table_id="${module.vpc_client.route_table_id}"
+  
   tags = {
     Environment = "VPN Transit"
   }
