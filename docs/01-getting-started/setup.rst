@@ -32,6 +32,24 @@ must use your corporate email address for the username.
 
 .. figure:: qwiklabs-login.png
 
+Log into the Linux VM
+----------------------------
+
+During this lab we create a VM for the different group on Azure. 
+We have already installed the terraform but just in case you need to install on your laptop:
+
+download the zip file 
+``https://releases.hashicorp.com/terraform/0.11.14/``
+
+.. code-block:: bash
+    $ sudo apt-get install unzip
+    $ unzip [Your terraform file in version 0.11.xx]
+    $ sudo cp terraform /usr/bin/
+    
+Now you can verify the version :
+
+.. code-block:: bash
+    $ terraform --version
 
 Launch the lab environment
 --------------------------
