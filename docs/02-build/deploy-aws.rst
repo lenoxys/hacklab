@@ -27,8 +27,8 @@ Create the environment variables.
 
 .. code-block:: bash
 
-    $ export AWS_ACCESS_KEY_ID="your-access-key-here"
-    $ export AWS_SECRET_ACCESS_KEY="your-secret-key-here"
+    $ export AWS_ACCESS_KEY_ID=your-access-key-here
+    $ export AWS_SECRET_ACCESS_KEY=your-secret-key-here
 
 
 Create an SSH key-pair
