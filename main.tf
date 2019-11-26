@@ -63,7 +63,7 @@ module "firewall" { # Déclaration du module 1er firewall
 
   fw_dataplane_sg_id = "${aws_security_group.public_sg.id}" # Security Group public
 
-  fw_version          = "9.0"
+  fw_version          = "8.1"
   fw_product_code     = "806j2of0qy5osgjjixq9gqc6g"
   fw_bootstrap_bucket = "${module.bootstrap_bucket.bootstrap_bucket_name}" # Spécification du bootsrap à utiliser
 
