@@ -11,7 +11,7 @@ In this activity you will:
 .. warning:: Before you start it is recommended that you launch a private instance
           of your web browser.  This will prevent the use of cached Google or
           Amazon credentials if you log into the AWS consoles.  This
-          will help ensure you do not incur any personal charges within these
+          will help ensure you do not incur any company charges within these
           cloud providers.
 
 .. figure:: incognito.png
@@ -27,10 +27,17 @@ web browser.
 
 ``https://console.aws.amazon.com/``
 
-Log in with your AWS credentials (Ask to your speaker). You
-must use your corporate email address for the username.
+Log in with your AWS credentials (Ask to your speaker). 
+You will create a specific role for terraform in a few minutes.
 
-.. figure:: qwiklabs-login.png
+Install Terraform
+----------------------------
+
+Today the lab is tested with terraform 0.8 to 0.11.
+You can download the `terraform binary <https://releases.hashicorp.com/terraform/>`_ and create a env PATH on your endpoint.
+Terraform is a simple binary without library etc... you can follow `this video <https://learn.hashicorp.com/terraform/getting-started/install.html>`_ for linux and windows 
+For MacOS & Linux user you can install `**terraform switcher** <https://warrensbox.github.io/terraform-switcher/>`_, The tfswitch command line tool lets you switch between different versions of terraform. 
+If you do not have a particular version of terraform installed, tfswitch will download the version you desire.
 
 Log into the Linux VM
 ----------------------------
