@@ -27,9 +27,15 @@ Create the environment variables.
 
 .. code-block:: bash
 
-    $ export AWS_ACCESS_KEY_ID="your-access-key-here"
-    $ export AWS_SECRET_ACCESS_KEY="your-secret-key-here"
+    $ export AWS_ACCESS_KEY_ID=your-access-key-here
+    $ export AWS_SECRET_ACCESS_KEY=your-secret-key-here
 
+for windows the environment variable can be created with :
+
+.. code-block:: bash
+
+    > set AWS_ACCESS_KEY_ID="your-access-key-here"
+    > set AWS_SECRET_ACCESS_KEY="your-secret-key-here"
 
 Create an SSH key-pair
 ----------------------
@@ -43,6 +49,8 @@ directory.
 .. code-block:: bash
 
     $ ssh-keygen -t rsa -b 1024 -N '' -f ~/.ssh/lab_ssh_key
+
+For windows you can create your public certificat with puttygen
 
 Create the Terraform variables
 ------------------------------
@@ -90,6 +98,7 @@ file.
     aws_az_name         = "<SEE_INSTRUCTOR_PRESENTATION>"
     public_key_file     = "~/.ssh/lab_ssh_key.pub"
 
+For windows you have to change your public key file in variables.tf at the root level
 
 Initialize the AWS Terraform provider
 -------------------------------------
@@ -110,6 +119,9 @@ Deploy the lab infrastucture plan
 We are now ready to deploy our lab infrastructure plan.  We should first
 perform a dry-run of the deployment process and validate the contents of the
 plan files and module dependencies.
+
+for windows :
+just before please update your module/bootstrap/main.tf line "dev/null" with "NUL"
 
 .. code-block:: bash
 
