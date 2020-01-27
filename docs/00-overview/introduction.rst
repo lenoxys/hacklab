@@ -59,10 +59,15 @@ Lab Topology
 Lab Components
 --------------
 
-Slide - AWS Account
-    This lab is launched using AWS Account, which is gived by your prefered SE.
+AWS Account
+    This lab is launched using AWS Account, which is gived by your prefered SE or you can use your own account (better)
     One login and password provides access to cloud-based lab environments. the account
     is temporary in the cloud provider in order to deploy and access the cloud infrastructure.
+
+Visual Studio Code
+    This lab can be perform with any text editor, but we advise to use visual studio code with ansible & terraform plugins
+    Visual Studio code can be download under the MIT license without telemetry, `you can install it on your endpoint <https://vscodium.com/>`_
+    Dont hesitate to scroll on vscodium webpage to understand how install it in a few second.
 
 Launchpad VM
     A Debian 9 Linux virtual machine will be deployed in each cloud environment
