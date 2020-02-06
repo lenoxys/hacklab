@@ -21,7 +21,9 @@ resources needed.
 In order for Terraform to do this it will need to authenticate to AWS using the
 AWS Access Key and Secret Key values that were presented to you or you can created in 
 AWS console when the lab was started.  Rather than write these as Terraform variables, we
-will use environment variables.
+will use environment variables. Because in production you will upload your terraform to a repo,
+if you hardcode your access key and secret access to any file and push with github to a public repo
+you will create a security issue.
 
 Create the environment variables.
 
@@ -50,7 +52,8 @@ directory.
 
     $ ssh-keygen -t rsa -b 1024 -N '' -f ~/.ssh/lab_ssh_key
 
-For windows you can create your public certificat with puttygen
+For windows you can create your public certificat with puttygen, please verify
+the option rsa at 1024 bit is selected. Put the certifcat in the hacklad folder.
 
 Create the Terraform variables
 ------------------------------
@@ -71,7 +74,7 @@ contents of these files to see what they contain and how they're structured.
     $ more outputs.tf
 
 The file ``main.tf`` defines the providers that will be used and the resources
-that will be created (more on that shortly).  Since it is poor practice to hard
+that will be created (more on that shortly).  Since it is not scalable to hard
 code values into the plan, the file ``variables.tf`` will be used to declare
 the variables that will be used in the plan (but not necessarily their values).
 The ``outputs.tf`` file will define the values to display that result from
@@ -99,6 +102,12 @@ file.
     public_key_file     = "~/.ssh/lab_ssh_key.pub"
 
 For windows you have to change your public key file in variables.tf at the root level
+
+.. code-block:: terraform
+
+    aws_region_name     = "<SEE_INSTRUCTOR_PRESENTATION>"
+    aws_az_name         = "<SEE_INSTRUCTOR_PRESENTATION>"
+    public_key_file     = ".lab_ssh_key.pub"
 
 Initialize the AWS Terraform provider
 -------------------------------------

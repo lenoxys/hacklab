@@ -100,6 +100,10 @@ module "firewall2" { # Déclaration du module 2nd firewall
 
 }
 
+module "loadbalancer" {
+  source ="/modules/loadbalancer"
+  name = 
+}
 resource "aws_security_group" "public_sg" { # Règle de sécurité pour accès au réseau
   name        = "Public Security Group"
   description = "Wide open security group"
