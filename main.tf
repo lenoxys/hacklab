@@ -27,7 +27,6 @@ module "vpc_transit" { #module VPC
     Environment = "transitvpc"
   }
 }
-
 module "vpc_client" { #module VPC
   source = "./modules/vpc_client" #Module Path
   name = "client"
@@ -72,7 +71,6 @@ module "firewall" { # Déclaration du module 1er firewall
   }
 
 }
-
 module "firewall2" { # Déclaration du module 2nd firewall
   source = "./modules/firewall2"
 
@@ -99,7 +97,6 @@ module "firewall2" { # Déclaration du module 2nd firewall
   }
 
 }
-
 module "loadbalancer" {
   source ="/modules/loadbalancer"
   name = "lb1"
