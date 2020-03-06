@@ -53,7 +53,7 @@ directory.
     $ ssh-keygen -t rsa -b 1024 -N '' -f ~/.ssh/lab_ssh_key
 
 For windows you can create your public certificat with puttygen, please verify
-the option rsa at 1024 bit is selected. Put the certifcat in the hacklad folder.
+the option rsa at 1024 bit is selected. Put the certifcat in the hacklab folder (where the git download the source file).
 
 Create the Terraform variables
 ------------------------------
@@ -63,8 +63,8 @@ Change into the AWS deployment directory.
 
     $ cd ~/hacklab/
 
-In this directory you will find the three main files associated with a
-Terraform plan: ``main.tf``, ``variables.tf``, and ``outputs.tf``.  View the
+In this directory you will find the four main files associated with a
+Terraform plan: ``main.tf``, ``variables.tf``, ``outputs.tf`` and ``resources.tf``.  View the
 contents of these files to see what they contain and how they're structured.
 
 .. code-block:: bash
@@ -72,6 +72,7 @@ contents of these files to see what they contain and how they're structured.
     $ more main.tf
     $ more variables.tf
     $ more outputs.tf
+    $ more resources.tf
 
 The file ``main.tf`` defines the providers that will be used and the resources
 that will be created (more on that shortly).  Since it is not scalable to hard
