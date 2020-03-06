@@ -42,8 +42,8 @@ If you do not have a particular version of terraform installed, tfswitch will do
 Log into the Linux VM
 ----------------------------
 
-During this lab we create a VM for the different group on Azure. 
-We have already installed the terraform but just in case you need to install on your laptop:
+During this lab we create a VM for the different group on Azure if you are directly based in Palo Alto Networks Office.
+We have already installed the terraform in the Linux VM but just in case you need to install on your laptop:
 
 download the zip file 
 ``https://releases.hashicorp.com/terraform/0.11.14/``
@@ -80,7 +80,7 @@ Palo Alto Networks Access
 -------------------------
 Once the lab environment has completed the provisioning process and the
 **NGFW IP** field is displayed, you may HTTPS/SSH into that IP address using the
-following credentials.
+following credentials  after few minutes (time to boot)
 
 - **Username:** ``paloalto``
 - **Password:** ``Pal0Alt0@123``
