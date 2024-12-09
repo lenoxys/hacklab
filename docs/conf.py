@@ -20,8 +20,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'HackLab'
-copyright = '2019, Palo Alto Networks'
-author = 'Damien Raynal'
+copyright = '2024, Palo Alto Networks'
+author = 'Aurelien DELAMARRE'
 
 # The short X.Y version
 version = '1.0'
